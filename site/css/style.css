@@ -83,11 +83,61 @@ header {
   z-index: 0;
 }
 
+/* ── Instructor credential badge (top-right of hero) ── */
+.instructor-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(74, 240, 176, 0.1);
+  border: 1px solid rgba(74, 240, 176, 0.3);
+  border-radius: 10px;
+  padding: 8px 12px;
+  text-align: center;
+  z-index: 2;
+}
+
+.inst-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.inst-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 3px 0 2px;
+}
+
+.inst-cred {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
   padding: 56px 20px 48px;
   max-width: 620px;
+}
+
+/* ── Now Enrolling badge ── */
+.enrolling-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #0a1628;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
 }
 
 .wordmark {
@@ -339,6 +389,11 @@ main {
 .cta-block p {
   font-size: 0.95rem;
   color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.cta-block .cta-sub {
+  font-size: 0.82rem;
   margin-bottom: 20px;
 }
 
