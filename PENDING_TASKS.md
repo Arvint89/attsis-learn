@@ -13,6 +13,8 @@ updated: 2026-05-15
 | PT-003 | Review and edit `content/level1/` session outlines | OPEN |
 | PT-004 | Review and edit `content/level2/` session outlines | OPEN |
 
+| PT-008 | Add "VSC Cleared" back to trust bar once check is complete | OPEN |
+
 ## NORMAL
 
 | ID | Task | Status |
