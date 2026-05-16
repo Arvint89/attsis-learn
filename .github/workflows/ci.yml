@@ -1,4 +1,4 @@
-name: CI — Validate HTML
+name: CI - Validate HTML
 
 on:
   push:
