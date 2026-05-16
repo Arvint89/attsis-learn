@@ -78,6 +78,14 @@ check("index.html has trust bar",
       file_contains("site/index.html", "trust-bar"))
 check("index.html has P.Eng",
       file_contains("site/index.html", "P.Eng"))
+check("index.html has STEM content",
+      file_contains("site/index.html", "STEM"))
+check("index.html has school levels",
+      file_contains("site/index.html", "Primary") and
+      file_contains("site/index.html", "Secondary"))
+check("index.html has no standalone 'engineer' title",
+      not file_contains("site/index.html", "Junior Engineer") and
+      not file_contains("site/index.html", "Engineer in Training"))
 
 # Content sessions
 for lvl in (1, 2):

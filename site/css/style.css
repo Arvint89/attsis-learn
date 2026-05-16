@@ -6,11 +6,18 @@
   --bg-bar: #0d1a2e;
   --accent: #4af0b0;
   --accent-dim: rgba(74, 240, 176, 0.12);
+  --accent-glow: rgba(74, 240, 176, 0.06);
   --text: #e8edf5;
   --text-muted: #8a9ab5;
   --border: rgba(74, 240, 176, 0.18);
   --radius: 14px;
   --font: 'Nunito', system-ui, sans-serif;
+
+  /* ── Image slots: drop a file in site/assets/ and update these ── */
+  --hero-img: none;          /* url('assets/hero.jpg')   */
+  --card-img-1: none;        /* url('assets/level1.jpg') */
+  --card-img-2: none;        /* url('assets/level2.jpg') */
+  --card-img-3: none;        /* url('assets/level3.jpg') */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,29 +33,87 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── HEADER ── */
+/* ─────────────────────────────────────────
+   HEADER / HERO
+   ───────────────────────────────────────── */
 header {
+  position: relative;
   text-align: center;
-  padding: 56px 20px 40px;
+  padding: 0;
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dot-grid pattern — pure CSS, no image file needed */
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(74, 240, 176, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radial glow — gives depth and focal point */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(74, 240, 176, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 80% 80%, rgba(74, 240, 176, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero cover image — activates when --hero-img is set in :root */
+.hero-img {
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;          /* dark overlay so text stays readable */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 56px 20px 48px;
+  max-width: 620px;
 }
 
 .wordmark {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 18px;
+  margin-bottom: 6px;
+}
+
+.location {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 22px;
 }
 
 header h1 {
-  font-size: clamp(1.75rem, 5vw, 2.6rem);
+  font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.15;
   color: var(--text);
-  max-width: 560px;
-  margin: 0 auto 14px;
+  margin: 0 auto 16px;
 }
 
 header h1 em {
@@ -57,7 +122,7 @@ header h1 em {
 }
 
 .sub {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   margin-bottom: 32px;
 }
@@ -73,11 +138,13 @@ header h1 em {
   border-radius: 50px;
   text-decoration: none;
   letter-spacing: 0.02em;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.15s;
 }
-.cta-btn:hover { opacity: 0.88; }
+.cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
-/* ── TRUST BAR ── */
+/* ─────────────────────────────────────────
+   TRUST BAR
+   ───────────────────────────────────────── */
 .trust-bar {
   background: var(--bg-bar);
   border-top: 1px solid var(--border);
@@ -100,7 +167,7 @@ header h1 em {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--text-muted);
   white-space: nowrap;
@@ -116,9 +183,11 @@ header h1 em {
   flex-shrink: 0;
 }
 
-/* ── MAIN ── */
+/* ─────────────────────────────────────────
+   MAIN
+   ───────────────────────────────────────── */
 main {
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 48px 20px 64px;
 }
@@ -132,7 +201,9 @@ main {
   margin-bottom: 24px;
 }
 
-/* ── CARDS ── */
+/* ─────────────────────────────────────────
+   CARDS — 1 col mobile → 3 col desktop
+   ───────────────────────────────────────── */
 .cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -140,67 +211,120 @@ main {
   margin-bottom: 56px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .cards { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 900px) {
+  .cards { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card--soon {
+  opacity: 0.72;
+}
+
+/* ── Card image slot ── */
+.card-img {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+/*
+  To add images: drop files in site/assets/ and update --card-img-N in :root above.
+  Until images are added, each level shows a unique gradient placeholder.
+*/
+.card-img--1 {
+  background-image: var(--card-img-1,
+    linear-gradient(135deg, rgba(74,240,176,0.25) 0%, rgba(10,22,40,0.6) 100%));
+}
+.card-img--2 {
+  background-image: var(--card-img-2,
+    linear-gradient(135deg, rgba(74,200,240,0.25) 0%, rgba(10,22,40,0.6) 100%));
+}
+.card-img--3 {
+  background-image: var(--card-img-3,
+    linear-gradient(135deg, rgba(140,74,240,0.25) 0%, rgba(10,22,40,0.6) 100%));
+}
+
+.card-body {
+  padding: 24px 22px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-tag {
   display: inline-block;
   background: var(--accent-dim);
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 20px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
+  align-self: flex-start;
+}
+
+.card-tag--soon {
+  background: rgba(140, 140, 140, 0.12);
+  color: var(--text-muted);
 }
 
 .card h2 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--text);
   margin-bottom: 4px;
 }
 
 .card .age {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .card ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 8px;
+  margin-top: auto;
 }
 
 .card ul li {
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
 }
 
 .card ul li::before {
   content: '';
   display: block;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--accent);
-  margin-top: 7px;
+  margin-top: 8px;
   flex-shrink: 0;
+}
+
+.card--soon .card ul li::before {
+  background: var(--text-muted);
 }
 
 /* ── BOTTOM CTA ── */
