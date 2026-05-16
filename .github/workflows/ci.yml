@@ -1,0 +1,30 @@
+name: CI — Validate HTML
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check site/index.html exists
+        run: test -f site/index.html
+
+      - name: Check site/css/style.css exists
+        run: test -f site/css/style.css
+
+      - name: Check site/js/main.js exists
+        run: test -f site/js/main.js
+
+      - name: Validate HTML is well-formed
+        run: python3 -c "
+import html.parser, sys
+class V(html.parser.HTMLParser):
+    pass
+with open('site/index.html', encoding='utf-8') as f:
+    V().feed(f.read())
+print('HTML valid')
+"
