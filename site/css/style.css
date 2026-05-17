@@ -13,8 +13,7 @@
   --radius: 14px;
   --font: 'Nunito', system-ui, sans-serif;
 
-  /* ── Image slots ── */
-  --hero-img: url('../assets/images/hero.png');
+  /* ── Card image slots ── */
   --card-img-1: url('../assets/images/level1.png');
   --card-img-2: url('../assets/images/level2.png');
   --card-img-3: url('../assets/images/level3.png');
@@ -47,40 +46,22 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-/* Dot-grid pattern — pure CSS, no image file needed */
-.hero-pattern {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(74, 240, 176, 0.18) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Radial glow — gives depth and focal point */
-.hero-glow {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(74, 240, 176, 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 80% 80%, rgba(74, 240, 176, 0.04) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Hero cover image — activates when --hero-img is set in :root */
-.hero-img {
-  position: absolute;
-  inset: 0;
-  background-image: var(--hero-img);
+  background-image: url('../assets/images/hero.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.18;          /* dark overlay so text stays readable */
-  pointer-events: none;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.72);
   z-index: 0;
+}
+
+header > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Instructor credential badge (top-right of hero) ── */
