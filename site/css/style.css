@@ -14,10 +14,10 @@
   --font: 'Nunito', system-ui, sans-serif;
 
   /* ── Image slots ── */
-  --hero-img: url('assets/images/hero.png');
-  --card-img-1: url('assets/images/level1.png');
-  --card-img-2: url('assets/images/level2.png');
-  --card-img-3: url('assets/images/level3.png');
+  --hero-img: url('../assets/images/hero.png');
+  --card-img-1: url('../assets/images/level1.png');
+  --card-img-2: url('../assets/images/level2.png');
+  --card-img-3: url('../assets/images/level3.png');
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
