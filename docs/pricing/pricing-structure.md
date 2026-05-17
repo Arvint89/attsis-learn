@@ -4,6 +4,43 @@ Source: attsis_learn_pricing_structure.html
 
 ---
 
+## Equipment Model — Model C (Hybrid) ✅ DECIDED
+
+**You own 1 trial kit per level. Every committed student buys their own.**
+
+| Item | Owner | Cost | Timing |
+|------|-------|------|--------|
+| LEGO Spike Essential (trial) | Instructor | ~$150 | One-time |
+| Arduino Starter Kit (trial) | Instructor | ~$60 | One-time |
+| LEGO Spike Essential (Session 1+) | Student/Parent | ~$150 | After free trial |
+| Arduino Starter Kit (Session 1+) | Student/Parent | ~$60 | After free trial |
+
+**Total instructor upfront: ~$210 — recovered in less than one paid session per student.**
+
+Send parents the exact Amazon.ca link the moment they confirm after the free trial.
+Kit arrives in 2 days (Prime). Session 1 begins on schedule.
+
+**Line for Wednesday course outline:**
+> "Students will need their own kit starting Session 1. We will provide the exact kit and purchase link after the free trial session. Kit cost is separate from tuition."
+
+---
+
+## Consumables — Baked into Tuition
+
+$5–10 per student per session buffer already covered at $40–$50/session rates.
+
+| Item | Cost | Notes |
+|------|------|-------|
+| Jumper wires | ~$10/bag | Lasts months |
+| LEDs + resistors | ~$8/pack | Assorted, reusable |
+| Breadboards | — | Durable, reusable |
+| AA batteries | ~$10/month | Ongoing |
+| Printed worksheets | ~$2/session | Per student |
+
+No separate consumables charge needed — margins cover it.
+
+---
+
 ## Session Pricing — Per Student
 
 ### Level 1 · Robotics & Coding · Elementary · Grades 1–5 · Ages 6–10

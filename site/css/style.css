@@ -13,11 +13,11 @@
   --radius: 14px;
   --font: 'Nunito', system-ui, sans-serif;
 
-  /* ── Image slots: drop a file in site/assets/ and update these ── */
-  --hero-img: none;          /* url('assets/hero.jpg')   */
-  --card-img-1: none;        /* url('assets/level1.jpg') */
-  --card-img-2: none;        /* url('assets/level2.jpg') */
-  --card-img-3: none;        /* url('assets/level3.jpg') */
+  /* ── Image slots ── */
+  --hero-img: url('assets/Hero_image.png');
+  --card-img-1: url('assets/LEVEL1.png');
+  --card-img-2: url('assets/LEVEL2.png');
+  --card-img-3: url('assets/LEVEL3.png');
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
